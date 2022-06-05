@@ -9,11 +9,27 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //panggil class dbHelper 
+  //panggil class dbHelper
   DBHelper dbHelper = DBHelper();
   //inisialisasi variabel
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+
+  _onPressed() {
+    setState(() {
+      //memanggil method loginData
+      if (_emailController.text.trim().toLowerCase().isNotEmpty &&
+          _passwordController.text.trim().toLowerCase().isNotEmpty) {
+        dbHelper.loginData(
+          _emailController.text.trim().toLowerCase(),
+          _passwordController.text.trim().toLowerCase(),
+        ).whenComplete(() {
+          //logika
+
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
