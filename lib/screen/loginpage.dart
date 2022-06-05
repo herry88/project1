@@ -68,9 +68,17 @@ class _LoginPageState extends State<LoginPage> {
                           Text(
                             'Login',
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 28.0,
                               fontWeight: FontWeight.bold,
+                              color: Colors.black,
                             ),
+                          ),
+                          SizedBox(
+                            height: 15.0,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 30),
                           ),
                         ],
                       ),
