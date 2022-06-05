@@ -11,7 +11,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.amber,
       body: Stack(
         children: [
           Container(
@@ -28,51 +28,52 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          Center(
-            child: Container(
-              margin: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.15,
-                left: 10,
-                right: 10,
-              ),
-              child: Form(
-                child: Card(
-                  elevation: 3.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.0),
-                      topRight: Radius.circular(50.0),
+          SingleChildScrollView(
+            child: Center(
+              child: Container(
+                margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.15,
+                  left: 10,
+                  right: 10,
+                ),
+                child: Form(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20.0),
+                        topRight: Radius.circular(50.0),
+                      ),
                     ),
-                  ),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 40.0,
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Icon(
-                            Icons.cloud_done,
-                            size: 40.0,
-                            color: Colors.green,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 40.0,
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Icon(
+                              Icons.cloud_done,
+                              size: 40.0,
+                              color: Colors.green,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
                           ),
-                          decoration: BoxDecoration(
-                            color: Colors.amber,
-                            borderRadius: BorderRadius.circular(12.0),
+                          SizedBox(
+                            height: 15.0,
                           ),
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          'Login',
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
+                          Text(
+                            'Login',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
