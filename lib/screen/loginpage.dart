@@ -61,7 +61,17 @@ class _LoginPageState extends State<LoginPage> {
                             color: Colors.amber,
                             borderRadius: BorderRadius.circular(12.0),
                           ),
-                        )
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          'Login',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),
