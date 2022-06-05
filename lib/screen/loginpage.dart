@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/helper/databasehelper.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -8,6 +9,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //panggil class dbHelper 
+  DBHelper dbHelper = DBHelper();
+  //inisialisasi variabel
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                               horizontal: 30,
                             ),
                             child: TextField(
+                              controller: _emailController,
                               decoration: InputDecoration(
                                 labelText: 'Email',
                                 labelStyle: TextStyle(
@@ -102,6 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                               horizontal: 30,
                             ),
                             child: TextField(
+                              controller: _passwordController,
                               decoration: InputDecoration(
                                 labelText: 'Password',
                                 labelStyle: TextStyle(
@@ -126,10 +135,13 @@ class _LoginPageState extends State<LoginPage> {
                                     const EdgeInsets.only(top: 10, left: 30),
                                 child: ElevatedButton(
                                   onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.amberAccent,
+                                  ),
                                   child: Text(
                                     'Login',
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ),
