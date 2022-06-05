@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:project1/helper/databasehelper.dart';
+import 'package:http/http.dart' as http;
+import 'package:project1/screen/tabberpage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -8,6 +13,58 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //panggil class dbHelper
+  DBHelper dbHelper = DBHelper();
+  //inisialisasi variabel
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  final _key = GlobalKey<FormState>();
+  bool _isLoading = false;
+
+  login() async {
+    setState(() {
+      _isLoading = true;
+    });
+    //ambil data dari form
+    var url = 'https://backendapilaravel-app.herokuapp.com/api/login';
+    final response = await http.post(Uri.parse(url), headers: {
+      'Accept': 'application/json',
+    }, body: {
+      "email": _emailController.text,
+      "password": _passwordController.text,
+    });
+    var res = json.decode(response.body);
+    if (response.statusCode == 200) {
+      if (res['user']['status'] == '1') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TabberPage(),
+          ),
+        );
+      } else {
+        print('halaman user');
+      }
+    } else {
+      print('error gagal');
+    }
+  }
+
+  check() {
+    final form = _key.currentState;
+    if (form!.validate()) {
+      form.save();
+      print(
+        'email : ${_emailController.text}, password: ${_passwordController.text}',
+      );
+      login();
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                   right: 10,
                 ),
                 child: Form(
+                  key: _key,
                   child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
@@ -82,6 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                               horizontal: 30,
                             ),
                             child: TextField(
+                              controller: _emailController,
                               decoration: InputDecoration(
                                 labelText: 'Email',
                                 labelStyle: TextStyle(
@@ -102,6 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                               horizontal: 30,
                             ),
                             child: TextField(
+                              controller: _passwordController,
                               decoration: InputDecoration(
                                 labelText: 'Password',
                                 labelStyle: TextStyle(
@@ -125,11 +185,16 @@ class _LoginPageState extends State<LoginPage> {
                                 padding:
                                     const EdgeInsets.only(top: 10, left: 30),
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    // _onPressed();
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.amberAccent,
+                                  ),
                                   child: Text(
                                     'Login',
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ),
