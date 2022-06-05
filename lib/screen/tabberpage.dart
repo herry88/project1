@@ -1,3 +1,4 @@
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:project1/screen/profile.dart';
 
@@ -37,6 +38,30 @@ class _TabberPageState extends State<TabberPage> {
           ],
         ),
       ),
+      bottomNavigationBar: bottomBar(),
+    );
+  }
+
+  Widget bottomBar() {
+    return BottomNavyBar(
+      selectedIndex: _index,
+      items: [
+        BottomNavyBarItem(
+          icon: Icon(Icons.home),
+          title: Text('Home'),
+          activeColor: Colors.amber,
+        ),
+        BottomNavyBarItem(
+          icon: Icon(Icons.person),
+          title: Text('Profile'),
+          activeColor: Colors.amber,
+        ),
+      ],
+      onItemSelected: (_index) {
+        setState(() {
+          _index = _index;
+        });
+      },
     );
   }
 }
