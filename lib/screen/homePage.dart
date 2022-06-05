@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/helper/databasehelper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,6 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  DBHelper dbHelper = DBHelper();
+
   String? email;
   getPref() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -20,10 +23,22 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await Future.delayed(const Duration(seconds: 1));
+          setState(() {
+            dbHelper.getData();
+          });
+        },
+        child: FutureBuilder(
+          future: dbHelper.getData(),
+          builder:
+              (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {},
+        ),
+      ),
+    );
   }
 }
