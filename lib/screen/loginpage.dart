@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:project1/helper/databasehelper.dart';
 import 'package:http/http.dart' as http;
+import 'package:project1/screen/tabberpage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -34,8 +35,13 @@ class _LoginPageState extends State<LoginPage> {
     });
     var res = json.decode(response.body);
     if (response.statusCode == 200) {
-      if (res['user']['status'] == 1) {
-        print('berhasil');
+      if (res['user']['status'] == '1') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TabberPage(),
+          ),
+        );
       } else {
         print('halaman user');
       }
