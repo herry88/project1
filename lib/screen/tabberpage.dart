@@ -18,6 +18,11 @@ class _TabberPageState extends State<TabberPage> {
   //array
   List _title = ['Home', 'Profile'];
   @override
+  void initState() {
+    _pageController = PageController();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
