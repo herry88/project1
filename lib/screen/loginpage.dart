@@ -37,8 +37,10 @@ class _LoginPageState extends State<LoginPage> {
       if (res['user']['status'] == 1) {
         print('berhasil');
       } else {
-        print('gagal');
+        print('halaman user');
       }
+    } else {
+      print('error gagal');
     }
   }
 
