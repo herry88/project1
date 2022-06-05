@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context, snapshot) {
             return snapshot.hasData
                 ? ItemList(list: snapshot.data)
-                : CircularProgressIndicator();
+                : const CircularProgressIndicator();
           },
         ),
       ),
