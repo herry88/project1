@@ -26,6 +26,7 @@ class _TabberPageState extends State<TabberPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           _title[_index],
           style: TextStyle(

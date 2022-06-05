@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: RefreshIndicator(
         onRefresh: () async {
           await Future.delayed(const Duration(seconds: 1));
@@ -59,7 +60,9 @@ class ItemList extends StatelessWidget {
           onTap: () {},
           child: Card(
               child: ListTile(
+                
             title: Text(list![index]['nmproduct']),
+
           )),
         );
       },
