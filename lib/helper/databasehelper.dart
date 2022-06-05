@@ -24,11 +24,11 @@ class DBHelper {
   }
 
   //get data
-  Future<List>? getData() async {
+  Future<List> getData() async {
     String myUrl = 'https://backendapilaravel-app.herokuapp.com/api/product';
     http.Response response = await http.get(Uri.parse(myUrl), headers: {
       'Accept': 'application/json',
     });
-    return json.decode(response.body);
+    return json.decode(response.body)['data'];
   }
 }

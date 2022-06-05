@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             dbHelper.getData();
           });
         },
-        child: FutureBuilder(
+        child: FutureBuilder<List>(
           future: dbHelper.getData(),
           builder: (context, snapshot) {
             return snapshot.hasData
@@ -42,6 +42,27 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
+    );
+  }
+}
+
+class ItemList extends StatelessWidget {
+  List? list;
+  ItemList({Key? key, this.list}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: list == null ? 0 : list!.length,
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () {},
+          child: Card(
+              child: ListTile(
+            title: Text(list![index]['nmproduct']),
+          )),
+        );
+      },
     );
   }
 }
