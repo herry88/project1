@@ -29,8 +29,8 @@ class _LoginPageState extends State<LoginPage> {
     final response = await http.post(Uri.parse(url), headers: {
       'Accept': 'application/json',
     }, body: {
-      "email": "${_emailController.text}",
-      "password": "${_passwordController.text}",
+      "email": _emailController.text,
+      "password": _passwordController.text,
     });
     var res = json.decode(response.body);
     if (response.statusCode == 200) {
