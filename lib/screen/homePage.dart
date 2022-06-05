@@ -35,8 +35,11 @@ class _HomePageState extends State<HomePage> {
         },
         child: FutureBuilder(
           future: dbHelper.getData(),
-          builder:
-              (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {},
+          builder: (context, snapshot) {
+            return snapshot.hasData
+                ? ItemList(list: snapshot.data)
+                : CircularProgressIndicator();
+          },
         ),
       ),
     );
