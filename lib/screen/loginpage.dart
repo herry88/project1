@@ -78,8 +78,64 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 30),
+                              vertical: 10,
+                              horizontal: 30,
+                            ),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                labelText: 'Email',
+                                labelStyle: TextStyle(
+                                    color: Colors.black, fontSize: 18.0),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                              ),
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.black,
+                              ),
+                            ),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 30,
+                            ),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                labelStyle: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18.0,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                              ),
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 10, left: 30),
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       ),
                     ),
