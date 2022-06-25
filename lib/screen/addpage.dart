@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:project1/helper/databasehelper.dart';
+
+import 'homePage.dart';
 
 class AddPage extends StatefulWidget {
   const AddPage({Key? key}) : super(key: key);
@@ -8,6 +12,11 @@ class AddPage extends StatefulWidget {
 }
 
 class _AddPageState extends State<AddPage> {
+  DBHelper databaseHelper = DBHelper();
+
+  //variable
+  TextEditingController nmproduct = TextEditingController();
+  TextEditingController stock = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
