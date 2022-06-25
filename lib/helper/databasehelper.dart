@@ -31,4 +31,16 @@ class DBHelper {
     });
     return json.decode(response.body)['data'];
   }
+
+  //delete data 
+  void deleteData(int id) async {
+    String myUrl = 'https://backendapilaravel-app.herokuapp.com/api/product/$id';
+    http.delete(Uri.parse(myUrl), headers: {
+      'Accept': 'application/json',
+    },).then((response) {
+      print('delete : ${response.body}');
+    });
+   
+
+  }
 }
