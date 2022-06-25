@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:project1/helper/databasehelper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'detailpage.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -26,7 +28,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: RefreshIndicator(
         onRefresh: () async {
           await Future.delayed(const Duration(seconds: 1));
@@ -57,12 +58,20 @@ class ItemList extends StatelessWidget {
       itemCount: list == null ? 0 : list!.length,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () {},
+          onTap: () {
+            //detail
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) {
+                return DetailPage(
+                  list: list,
+                  index: index,
+                );
+              }),
+            );
+          },
           child: Card(
               child: ListTile(
-                
             title: Text(list![index]['nmproduct']),
-
           )),
         );
       },
