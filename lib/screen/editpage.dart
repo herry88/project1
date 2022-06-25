@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class EditPage extends StatefulWidget {
-  const EditPage({Key? key}) : super(key: key);
+  List? list;
+  int index;
+  EditPage({Key? key, this.list, required this.index}) : super(key: key);
 
   @override
   State<EditPage> createState() => _EditPageState();

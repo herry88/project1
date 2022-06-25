@@ -23,6 +23,20 @@ class DBHelper {
     }
   }
 
+  //addData
+  void addData(String nmproduct, String stock) async {
+    String myUrl = 'https://backendapilaravel-app.herokuapp.com/api/product';
+    http.post(Uri.parse(myUrl), headers: {
+      'Accept': 'application/json',
+    }, body: {
+      "nmproduct": nmproduct,
+      "stock": stock.toString(),
+    }).then((response) {
+      print('status : ${response.statusCode}');
+      print('body : ${response.body}');
+    });
+  }
+
   //get data
   Future<List> getData() async {
     String myUrl = 'https://backendapilaravel-app.herokuapp.com/api/product';
@@ -32,15 +46,17 @@ class DBHelper {
     return json.decode(response.body)['data'];
   }
 
-  //delete data 
+  //delete data
   void deleteData(int id) async {
-    String myUrl = 'https://backendapilaravel-app.herokuapp.com/api/product/$id';
-    http.delete(Uri.parse(myUrl), headers: {
-      'Accept': 'application/json',
-    },).then((response) {
+    String myUrl =
+        'https://backendapilaravel-app.herokuapp.com/api/product/$id';
+    http.delete(
+      Uri.parse(myUrl),
+      headers: {
+        'Accept': 'application/json',
+      },
+    ).then((response) {
       print('delete : ${response.body}');
     });
-   
-
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project1/helper/databasehelper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'addpage.dart';
 import 'detailpage.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,6 +44,17 @@ class _HomePageState extends State<HomePage> {
                 : const CircularProgressIndicator();
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddPage(),
+            ),
+          );
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
