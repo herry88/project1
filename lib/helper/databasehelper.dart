@@ -46,6 +46,21 @@ class DBHelper {
     return json.decode(response.body)['data'];
   }
 
+  //editData
+  void editData(int id, String nmproduct, String stock) async {
+    String myUrl =
+        'https://backendapilaravel-app.herokuapp.com/api/product/$id';
+    http.put(Uri.parse(myUrl), headers: {
+      'Accept': 'application/json',
+    }, body: {
+      'nmproduct': nmproduct,
+      'stock': stock.toString(),
+    }).then((response) {
+      print('Status: ${response.statusCode}');
+      print('body: ${response.body}');
+    });
+  }
+
   //delete data
   void deleteData(int id) async {
     String myUrl =
