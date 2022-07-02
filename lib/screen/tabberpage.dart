@@ -1,6 +1,7 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:project1/screen/profile.dart';
+import 'package:project1/screen/scanpage.dart';
 
 import 'homePage.dart';
 
@@ -16,12 +17,13 @@ class _TabberPageState extends State<TabberPage> {
   late PageController _pageController;
 
   //array
-  List _title = ['Home', 'Profile'];
+  List _title = ['Home', 'Barcode', 'Profile'];
   @override
   void initState() {
     _pageController = PageController();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +42,7 @@ class _TabberPageState extends State<TabberPage> {
           controller: _pageController,
           children: [
             HomePage(),
+            BarcodeScan(),
             ProfilePage(),
           ],
         ),
