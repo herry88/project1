@@ -73,7 +73,10 @@ class _DetailPageState extends State<DetailPage> {
                         //edit function nanti
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => EditPage(),
+                            builder: (context) => EditPage(
+                              list: widget.list,
+                              index: widget.index,
+                            ),
                           ),
                         );
                       },
